@@ -1,0 +1,31 @@
+#!/bin/python3
+
+import sys
+
+def maximumGcdAndSum(A, B):
+    A = set(A)
+    B = set(B)
+    max_nbr = max(max(A), max(B))
+    i = max_nbr
+
+    while i > 0:  # for each i starting from max number
+        i_pow = i  # i, i^2, i^3, i^4, ...
+        maxa = maxb = 0
+
+        while i_pow <= max_nbr:  # '<=' is a must here
+            if i_pow in A:
+                maxa = i_pow  # get the max from power list which devides A
+            if i_pow in B:
+                maxb = i_pow  # get the max from power list which devides B
+            i_pow += i
+        if maxa and maxb:
+            return maxa + maxb  # if both found, stop algorithm
+        i -= 1
+
+    return 0
+
+if _name_ == "_main_":
+    n = int(input().strip())
+    A = list(map(int, input().strip().split(' ')))
+    B = list(map(int, input().strip().split(' ')))
+    res = maximumGcdAndSum(A, B)
