@@ -29,3 +29,5 @@ if _name_ == "_main_":
     A = list(map(int, input().strip().split(' ')))
     B = list(map(int, input().strip().split(' ')))
     res = maximumGcdAndSum(A, B)
+    
+    print(res)
